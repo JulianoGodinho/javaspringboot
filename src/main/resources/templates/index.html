@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>CRUD java Springboot</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Site responsivo criado com java Springboot com um CRUD simples com apenas uma 		tabela, utilizado tambem o framework bootstrap">
+		<meta name="keywords" content="produto, cadastro, buscar, delete, editar">
+		<meta name="author" content="Juliano Godinho::julianogodinho99@gmail.com">
+		<link rel="shortcut icon" href="img/favicon-16x16.png">
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script src="js/scripts.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<script src="js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	</head>
+	
+	<body>
+		
+		<div class="container">
+			
+			
+			<div class="row">
+				<div class="col-md-6">
+					<h1>LISTA DE PRODUTOS</h1>
+				</div>
+				<div class="col-md-1">
+					<a href="/newProduct">
+					<img src="img/add.png" style="height: 40px; padding-top:10px;">
+					</a>
+				</div>
+			</div>
+			
+		
+			<div class="row" style="font-weight: bold">
+				<div class="col-md-1">Codigo</div>
+				<div class="col-md-3">Nome</div>
+				<div class="col-md-1">Preço</div>
+				<div class="col-md-1">Estoque</div>
+				<div class="col-md-3">Fornecedor</div>
+			</div>
+			
+			
+		
+			<div th:each="objeto : ${listProduct}">
+				<div class="row">
+					<div class="col-md-1" th:text="${objeto.id}"></div>
+					<div class="col-md-3" th:text="${objeto.name}"></div>
+					<div class="col-md-1" th:text="${objeto.price}"></div>
+					<div class="col-md-1" th:text="${objeto.stock}"></div>
+					<div class="col-md-3" th:text="${objeto.provider}"></div>
+					
+				
+					
+					<div class="col-md-1">
+						<a th:href="@{'/edit/' + ${objeto.id}}">Editar</a>
+					</div>
+					<div class="col-md-1">
+						<a th:href="@{'/delete/' + ${objeto.id}}">Excluir</a>
+					</div>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+	</body>
+
+</html>
